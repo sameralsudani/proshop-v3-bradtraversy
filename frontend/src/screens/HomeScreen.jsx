@@ -43,6 +43,22 @@ const HomeScreen = () => {
               </Card>
             </Col>
           </Row>
+          <Row className='mt-5 mb-5'>
+            <Col xs={12} md={6}>
+              <Card style={{ width: '100%', height: '100%' }}>
+                <Col>
+                  <Card.Body>
+                    <Card.Title className='mt-3 mb-3'>
+                      Check Out Clubs New Features
+                    </Card.Title>
+                    <Button className='mb-3' variant='success'>
+                      Learn more
+                    </Button>
+                  </Card.Body>
+                </Col>
+              </Card>
+            </Col>
+          </Row>
           <h3>Shop by Grade</h3>
           <CarouselContainer />
         </>

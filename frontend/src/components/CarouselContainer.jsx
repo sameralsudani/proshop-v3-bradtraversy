@@ -1,12 +1,12 @@
 import './CarouselContainer.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Product from './Product';
+import Grade from './Grade';
 import { productData, responsive } from './data';
 
 export default function CarouselContainer() {
   const product = productData.map((item) => (
-    <Product
+    <Grade
       name={item.name}
       url={item.imageurl}
       price={item.price}
