@@ -55,6 +55,27 @@ const Header = () => {
                   )}
                 </Nav.Link>
               </LinkContainer>
+              <NavDropdown title='Books' id='book-menu'>
+                <LinkContainer to='/books/fiction'>
+                  <NavDropdown.Item>Fiction</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/books/shopAllproducts'>
+                  <NavDropdown.Item>Shop All Products</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/books/valuePacks'>
+                  <NavDropdown.Item>Value Packs</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/books/fiveOrLess'>
+                  <NavDropdown.Item>$5 or less</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/books/nonfiction'>
+                  <NavDropdown.Item>Nonfiction</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/books/graphicNovels'>
+                  <NavDropdown.Item>Graphic Novels</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+
               {userInfo ? (
                 <>
                   <NavDropdown title={userInfo.name} id='username'>

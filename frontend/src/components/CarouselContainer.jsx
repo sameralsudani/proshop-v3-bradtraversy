@@ -5,8 +5,9 @@ import Grade from './Grade';
 import { productData, responsive } from './data';
 
 export default function CarouselContainer() {
-  const product = productData.map((item) => (
+  const product = productData.map((item, index) => (
     <Grade
+      key={index}
       name={item.name}
       url={item.imageurl}
       price={item.price}

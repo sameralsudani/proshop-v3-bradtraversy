@@ -16,7 +16,9 @@ import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import BookScreen from './screens/BookScreen';
 import CartScreen from './screens/CartScreen';
+import BooksScreen from './screens/BooksScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen';
@@ -40,12 +42,19 @@ const router = createBrowserRouter(
       <Route path='/search/:keyword' element={<HomeScreen />} />
       <Route path='/page/:pageNumber' element={<HomeScreen />} />
       <Route
+        path='books/:category/page/:pageNumber'
+        element={<BooksScreen />}
+      />
+      <Route
         path='/search/:keyword/page/:pageNumber'
         element={<HomeScreen />}
       />
       <Route path='/product/:id' element={<ProductScreen />} />
+      <Route path='/book/:id' element={<BookScreen />} />
       <Route path='/cart' element={<CartScreen />} />
+      <Route path='/books/:category' element={<BooksScreen />} />
       <Route path='/login' element={<LoginScreen />} />
+
       <Route path='/register' element={<RegisterScreen />} />
       {/* Registered users */}
       <Route path='' element={<PrivateRoute />}>
