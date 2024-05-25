@@ -3,6 +3,7 @@ const router = express.Router();
 import {
   getBooks,
   getBookById,
+  getBooksByCategory,
   createBook,
   updateBook,
   deleteBook,
@@ -15,6 +16,8 @@ import checkObjectId from '../middleware/checkObjectId.js';
 router.route('/').get(getBooks).post(protect, admin, createBook);
 router.route('/:id/reviews').post(protect, checkObjectId, createBookReview);
 router.get('/top', getTopBooks);
+router.route('/:category/:pageNumber').get(getBooksByCategory);
+
 router
   .route('/:id')
   .get(checkObjectId, getBookById)

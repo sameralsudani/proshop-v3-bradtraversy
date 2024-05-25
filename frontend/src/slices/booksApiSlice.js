@@ -17,6 +17,15 @@ export const booksApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
     }),
+
+    getBooksByCategory: builder.query({
+      query: ({ category, pageNumber }) => ({
+        url: `${BOOKS_URL}/${category}/${pageNumber || 1}`,
+      }),
+      keepUnusedDataFor: 5,
+      providesTags: ['Books'],
+    }),
+
     createBook: builder.mutation({
       query: () => ({
         url: `${BOOKS_URL}`,
@@ -64,6 +73,7 @@ export const booksApiSlice = apiSlice.injectEndpoints({
 export const {
   useGetBooksQuery,
   useGetBookDetailsQuery,
+  useGetBooksByCategoryQuery,
   useCreateBookMutation,
   useUpdateBookMutation,
   useUploadBookImageMutation,

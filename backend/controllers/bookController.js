@@ -25,7 +25,7 @@ const getBooks = asyncHandler(async (req, res) => {
   res.json({ books, page, pages: Math.ceil(count / pageSize) });
 });
 
-// @desc    Fetch single product
+// @desc    Fetch single book
 // @route   GET /api/books/:id
 // @access  Public
 const getBookById = asyncHandler(async (req, res) => {
@@ -40,6 +40,34 @@ const getBookById = asyncHandler(async (req, res) => {
     // i.e. book may be null
     res.status(404);
     throw new Error('Book not found');
+  }
+});
+
+// @desc    Fetch  books by category
+// @route   GET /api/books/:category/:pageNmuner
+// @access  Public
+const getBooksByCategory = asyncHandler(async (req, res) => {
+  const { category, pageNumber } = req.params;
+  const pageSize = process.env.PAGINATION_LIMIT;
+  const page = Number(pageNumber) || 1;
+  if (category !== 'shopAllproducts') {
+    const count = await Book.countDocuments({
+      category: category,
+    });
+    const books = await Book.find({
+      category: category,
+    })
+      .limit(pageSize)
+      .skip(pageSize * (page - 1));
+
+    res.json({ books, page, pages: Math.ceil(count / pageSize) });
+  } else {
+    const count = await Book.countDocuments();
+    const books = await Book.find()
+      .limit(pageSize)
+      .skip(pageSize * (page - 1));
+
+    res.json({ books, page, pages: Math.ceil(count / pageSize) });
   }
 });
 
@@ -157,6 +185,7 @@ const getTopBooks = asyncHandler(async (req, res) => {
 export {
   getBooks,
   getBookById,
+  getBooksByCategory,
   createBook,
   updateBook,
   deleteBook,
