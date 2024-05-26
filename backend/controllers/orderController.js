@@ -1,6 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
-import Product from '../models/productModel.js';
+import Book from '../models/bookModel.js';
 import { calcPrices } from '../utils/calcPrices.js';
 import { verifyPayPalPayment, checkIfNewTransaction } from '../utils/paypal.js';
 
@@ -20,7 +20,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     // side code - https://gist.github.com/bushblade/725780e6043eaf59415fbaf6ca7376ff
 
     // get the ordered items from our database
-    const itemsFromDB = await Product.find({
+    const itemsFromDB = await Book.find({
       _id: { $in: orderItems.map((x) => x._id) },
     });
 
@@ -31,7 +31,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
       );
       return {
         ...itemFromClient,
-        product: itemFromClient._id,
+        book: itemFromClient._id,
         price: matchingItemFromDB.price,
         _id: undefined,
       };

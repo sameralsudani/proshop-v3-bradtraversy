@@ -14,7 +14,7 @@ import {
 import { toast } from 'react-toastify';
 import {
   useGetBookDetailsQuery,
-  useCreateReviewMutation,
+  useCreateBookReviewMutation,
 } from '../slices/booksApiSlice';
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
@@ -24,6 +24,7 @@ import { addToCart } from '../slices/cartSlice';
 
 const BookScreen = () => {
   const { id: bookId } = useParams();
+  console.log('🚀 ~ BookScreen ~ bookId:', bookId);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -47,9 +48,10 @@ const BookScreen = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
   const [createReview, { isLoading: loadingBookReview }] =
-    useCreateReviewMutation();
+    useCreateBookReviewMutation();
 
   const submitHandler = async (e) => {
+    console.log('🚀 ~ submitHandler ~ submitHandler:', submitHandler);
     e.preventDefault();
 
     try {
