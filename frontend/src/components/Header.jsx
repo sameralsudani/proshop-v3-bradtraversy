@@ -66,13 +66,21 @@ const Header = () => {
                   <NavDropdown.Item>Value Packs</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/books/fiveOrLess'>
-                  <NavDropdown.Item>$5 or less</NavDropdown.Item>
+                  <NavDropdown.Item>$5 or Less</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/books/nonfiction'>
                   <NavDropdown.Item>Nonfiction</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/books/graphicNovels'>
                   <NavDropdown.Item>Graphic Novels</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+              <NavDropdown title='Clubs' id='club-menu'>
+                {/* <LinkContainer to='/books/clubs/bookClubs'>
+                  <NavDropdown.Item>Book Clubs</NavDropdown.Item>
+                </LinkContainer> */}
+                <LinkContainer to='/clubs/article'>
+                  <NavDropdown.Item>Fun Clubs</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
 

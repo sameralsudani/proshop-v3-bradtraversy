@@ -1,6 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
+import { stripe } from '../utils/stripe.js';
 
 // @desc    Auth user & get token
 // @route   POST /api/users/auth
@@ -38,10 +39,20 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error('User already exists');
   }
 
+  const customer = await stripe.customers.create(
+    {
+      email,
+    },
+    {
+      apiKey: process.env.STRIPE_SECRET_KEY,
+    }
+  );
+
   const user = await User.create({
     name,
     email,
     password,
+    stripeCustomerId: customer.id,
   });
 
   if (user) {
@@ -52,6 +63,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      stripeCustomerId: customer.id,
     });
   } else {
     res.status(400);

@@ -51,7 +51,6 @@ const BookScreen = () => {
     useCreateBookReviewMutation();
 
   const submitHandler = async (e) => {
-    console.log('🚀 ~ submitHandler ~ submitHandler:', submitHandler);
     e.preventDefault();
 
     try {
