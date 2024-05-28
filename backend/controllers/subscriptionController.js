@@ -29,8 +29,8 @@ const createSession = asyncHandler(async (req, res) => {
           quantity: 1,
         },
       ],
-      success_url: 'http://localhost:3000/books/clubs/products',
-      cancel_url: 'http://localhost:3000/books/clubs/plans',
+      success_url: 'https://proshop-v3-bradtraversy.onrender.com/clubs/article',
+      cancel_url: 'https://proshop-v3-bradtraversy.onrender.com/clubs/plans',
       customer: user?.stripeCustomerId,
     },
     {
