@@ -21,6 +21,9 @@ import ArticleScreen from './screens/ArticleScreen';
 import CartScreen from './screens/CartScreen';
 import BooksScreen from './screens/BooksScreen';
 import LoginScreen from './screens/LoginScreen';
+import CheckEmailScreen from './screens/CheckEmailScreen';
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
+import ResetPasswordScreen from './screens/ResetPasswordScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
@@ -54,8 +57,13 @@ const router = createBrowserRouter(
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/books/:category' element={<BooksScreen />} />
       <Route path='/login' element={<LoginScreen />} />
+      <Route path='/checkEmail' element={<CheckEmailScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
-
+      <Route path='/forgotPassword' element={<ForgotPasswordScreen />} />
+      <Route
+        path='/resetPassword/:id/:token'
+        element={<ResetPasswordScreen />}
+      />
       {/* Registered users */}
       <Route path='' element={<PrivateRoute />}>
         <Route path='/shipping' element={<ShippingScreen />} />

@@ -84,6 +84,11 @@ const HomeLoginScreen = () => {
               </Link>
             </Col>
           </Row>
+          <Row className='py-1'>
+            <Col>
+              <Link to='/forgotPassword'>Forgot Password</Link>
+            </Col>
+          </Row>
         </div>
       ) : (
         <HomeRegisterScreen />
