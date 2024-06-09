@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer>
-      <Container>
+      <Container style={{ marginBottom: '25px' }}>
         <Row>
           <Col className='text-center py-3'>
             <p>ProShop &copy; {currentYear}</p>
