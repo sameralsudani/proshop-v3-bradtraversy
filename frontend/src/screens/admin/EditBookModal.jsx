@@ -1,33 +1,25 @@
-import { Button, Row, Col, Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { updateBook } from '../../slices/booksApiSlice2';
 import { Form } from 'react-bootstrap';
 import FormContainer from '../../components/FormContainer';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useGetBooksByCategoryQuery } from '../../slices/booksApiSlice';
+import Modal from 'react-bootstrap/Modal';
+import Loader from '../../components/Loader';
 
-const EditBookScreen = () => {
-  const { id } = useParams();
-  const { data, refetch } = useGetBooksByCategoryQuery({
-    category: 'shopAllproducts',
-    pageNumber: 1,
-  });
-  const navigate = useNavigate();
-
-  const book = data?.books?.find((item) => {
-    return item._id === id;
-  });
-
-  const [title, setTitle] = useState(book?.title);
-  const [category, setCategory] = useState(book?.category);
-  const [description, setDescription] = useState(book?.description);
-  const [price, setPrice] = useState(book?.price);
-  const [countInStock, setCountInStock] = useState(book?.countInStock);
-  const [pages, setPages] = useState(book?.pages);
-  const [author, setAuthor] = useState(book?.author);
-  const [vender, setVender] = useState(book?.vender);
+const EditBookModal = (props) => {
+  const { book, onHide, refetch } = props;
+  const [title, setTitle] = useState(book.title);
+  const [category, setCategory] = useState(book ? book.category : '');
+  const [description, setDescription] = useState(book ? book.description : '');
+  const [price, setPrice] = useState(book ? book.price : null);
+  const [countInStock, setCountInStock] = useState(
+    book ? book.countInStock : null
+  );
+  const [pages, setPages] = useState(book ? book.pages : null);
+  const [author, setAuthor] = useState(book ? book.author : '');
+  const [vender, setVender] = useState(book ? book.vender : '');
 
   const [imageFile, setImageFile] = useState('');
 
@@ -49,18 +41,27 @@ const EditBookScreen = () => {
     if (imageFile) {
       formData.append(`imageFile`, imageFile);
     }
-    updateBook(formData, id);
+    updateBook(formData, book._id);
     toast.success('Book updated');
+    onHide(false);
     refetch();
-    navigate('/admin/bookList');
   };
 
-  return (
-    <>
-      <Row className='align-items-center'>
-        <Col>
+  if (book) {
+    return (
+      <Modal
+        {...props}
+        size='lg'
+        aria-labelledby='contained-modal-title-vcenter'
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id='contained-modal-title-vcenter'>
+            Edit Book
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <FormContainer>
-            <h2>Edit Book</h2>
             <Form onSubmit={onSubmit}>
               <Form.Group controlId='name'>
                 <Form.Label>Title</Form.Label>
@@ -154,10 +155,12 @@ const EditBookScreen = () => {
               </Button>
             </Form>
           </FormContainer>
-        </Col>
-      </Row>
-    </>
-  );
+        </Modal.Body>
+      </Modal>
+    );
+  } else {
+    <Loader />;
+  }
 };
 
-export default EditBookScreen;
+export default EditBookModal;

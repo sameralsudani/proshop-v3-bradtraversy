@@ -1,16 +1,19 @@
-import { LinkContainer } from 'react-router-bootstrap';
+import { useState } from 'react';
 import { Table, Button, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaPlus } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import Paginate from '../../components/Paginate';
+import EditBookModal from './EditBookModal';
 import { useGetBooksByCategoryQuery } from '../../slices/booksApiSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const BookListScreen = () => {
   const { pageNumber } = useParams();
+  const [modalShow, setModalShow] = useState(false);
+  const [book, setBook] = useState(null);
 
-  const { data, isLoading, error } = useGetBooksByCategoryQuery({
+  const { data, isLoading, error, refetch } = useGetBooksByCategoryQuery({
     category: 'shopAllproducts',
     pageNumber,
   });
@@ -60,17 +63,31 @@ const BookListScreen = () => {
                   <td>{book.author}</td>
 
                   <td>
-                    <LinkContainer to={`/admin/book/${book._id}/edit`}>
-                      <Button variant='light' className='btn-sm mx-2'>
-                        <FaEdit />
-                      </Button>
-                    </LinkContainer>
+                    <Button
+                      variant='light'
+                      className='btn-sm mx-2'
+                      onClick={() => {
+                        setBook(book);
+                        setModalShow(true);
+                      }}
+                    >
+                      <FaEdit />
+                    </Button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
           <Paginate pages={data.pages} page={data.page} isAdmin={true} />
+
+          {modalShow && (
+            <EditBookModal
+              book={book}
+              show={modalShow}
+              onHide={(value) => setModalShow(value)}
+              refetch={() => refetch()}
+            />
+          )}
         </>
       )}
     </>
