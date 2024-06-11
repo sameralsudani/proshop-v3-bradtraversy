@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import BottomTabNav2 from './components/BottomTabNav2';
+import BottomTabNav from './components/BottomTabNav';
 import { logout } from './slices/authSlice';
 
 import { ToastContainer } from 'react-toastify';
@@ -48,7 +48,7 @@ const App = () => {
         </Container>
       </main>
       <Footer />
-      {width < 821 && <BottomTabNav2 />}
+      {width < 821 && <BottomTabNav />}
     </>
   );
 };

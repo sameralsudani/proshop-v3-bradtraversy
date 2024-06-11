@@ -1,5 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Book from '../models/bookModel.js';
+import cloudinary from 'cloudinary';
 
 // @desc    Fetch all Books
 // @route   GET /api/Books
@@ -75,45 +76,58 @@ const getBooksByCategory = asyncHandler(async (req, res) => {
 // @route   POST /api/books
 // @access  Private/Admin
 const createBook = asyncHandler(async (req, res) => {
-  const book = new Book({
-    name: 'Sample name',
-    price: 0,
-    user: req.user._id,
-    image: '/images/sample.jpg',
-    brand: 'Sample brand',
-    category: 'Sample category',
-    countInStock: 0,
-    numReviews: 0,
-    description: 'Sample description',
-  });
+  try {
+    const book = new Book({
+      user: req.body.userId,
+      title: req.body.title,
+      price: req.body.price,
+      description: req.body.description,
+      category: req.body.category,
+      countInStock: req.body.countInStock,
+      pages: req.body.pages,
+      author: req.body.author,
+      vender: req.body.vender,
+    });
 
-  const createdBook = await book.save();
-  res.status(201).json(createdBook);
+    if (req.file) {
+      const imageLink = await uploadImage(req.file);
+      book.imageLink = imageLink;
+    }
+
+    await book.save();
+    res.status(200).send(book);
+  } catch (error) {
+    console.log('error', error);
+    res.status(500).json({ message: 'Something went wrong' });
+  }
 });
 
-// @desc    Update a product
+// @desc    Update a book
 // @route   PUT /api/books/:id
 // @access  Private/Admin
 const updateBook = asyncHandler(async (req, res) => {
-  const { name, price, description, image, brand, category, countInStock } =
-    req.body;
+  try {
+    const book = await Book.findById(req.params.id);
 
-  const book = await Product.findById(req.params.id);
+    book.title = req.body.title;
+    book.price = req.body.price;
+    book.description = req.body.description;
+    book.category = req.body.category;
+    book.countInStock = req.body.countInStock;
+    book.pages = req.body.pages;
+    book.author = req.body.author;
+    book.vender = req.body.vender;
 
-  if (book) {
-    book.name = name;
-    book.price = price;
-    book.description = description;
-    book.image = image;
-    book.brand = brand;
-    book.category = category;
-    book.countInStock = countInStock;
+    if (req.file) {
+      const imageLink = await uploadImage(req.file);
+      book.imageLink = imageLink;
+    }
 
-    const updatedBook = await Book.save();
-    res.json(updatedBook);
-  } else {
-    res.status(404);
-    throw new Error('Product not found');
+    await book.save();
+    res.status(200).send(book);
+  } catch (error) {
+    console.log('error', error);
+    res.status(500).json({ message: 'Something went wrong' });
   }
 });
 
@@ -181,6 +195,14 @@ const getTopBooks = asyncHandler(async (req, res) => {
 
   res.json(books);
 });
+
+const uploadImage = async (file) => {
+  const image = file;
+  const base64Image = Buffer.from(image.buffer).toString('base64');
+  const dataURI = `data:${image.mimetype};base64,${base64Image}`;
+  const uploadResponse = await cloudinary.v2.uploader.upload(dataURI);
+  return uploadResponse.url;
+};
 
 export {
   getBooks,

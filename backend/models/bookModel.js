@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 
 const reviewSchema = mongoose.Schema(
   {
-    title: { type: String, required: true },
-    rating: { type: Number, required: true },
-    comment: { type: String, required: true },
+    title: { type: String },
+    rating: { type: Number },
+    comment: { type: String },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
@@ -25,7 +25,6 @@ const bookSchema = mongoose.Schema(
     },
     title: {
       type: String,
-      required: true,
     },
     imageLink: {
       type: String,

@@ -14,10 +14,17 @@ import uploadRoutes from './routes/uploadRoutes.js';
 import forgotPasswordRoutes from './routes/forgotPasswordRoutes.js';
 import resetPasswordRoutes from './routes/resetPasswordRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import { v2 as cloudinary } from 'cloudinary';
 
 const port = process.env.PORT || 5000;
 
 connectDB();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const app = express();
 

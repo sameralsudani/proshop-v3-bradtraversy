@@ -76,9 +76,6 @@ const Header = () => {
                 </LinkContainer>
               </NavDropdown>
               <NavDropdown title='Clubs' id='club-menu'>
-                {/* <LinkContainer to='/books/clubs/bookClubs'>
-                  <NavDropdown.Item>Book Clubs</NavDropdown.Item>
-                </LinkContainer> */}
                 <LinkContainer to='/clubs/article'>
                   <NavDropdown.Item>Fun Clubs</NavDropdown.Item>
                 </LinkContainer>
@@ -108,6 +105,9 @@ const Header = () => {
                 <NavDropdown title='Admin' id='adminmenu'>
                   <LinkContainer to='/admin/productlist'>
                     <NavDropdown.Item>Products</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/bookList'>
+                    <NavDropdown.Item>Books</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/orderlist'>
                     <NavDropdown.Item>Orders</NavDropdown.Item>

@@ -1,24 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import './bottomTabNav.css';
 
-export default function BottomTabNav() {
+export default function BottomTabNav2() {
   return (
-    <div>
-      <nav className='nav'>
-        <Link to='/' className='nav__link'>
-          Home
-        </Link>
-        <Link to='/cart' className='nav__link'>
-          Cart
-        </Link>
-        <Link to='#' className='nav__link'>
-          Profile
-        </Link>
-        <Link to='#' className='nav__link'>
-          Settings
-        </Link>
-      </nav>
-    </div>
+    <nav className='nav'>
+      <ul>
+        <CustomLink to='/'>Home</CustomLink>
+        <CustomLink to='/cart'>Cart</CustomLink>
+        <CustomLink to='/books/shopAllproducts'>Books</CustomLink>
+      </ul>
+    </nav>
+  );
+}
+
+function CustomLink({ to, children, ...props }) {
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+
+  return (
+    <li className={isActive ? 'active' : ''}>
+      <Link to={to} {...props}>
+        {children}
+      </Link>
+    </li>
   );
 }
