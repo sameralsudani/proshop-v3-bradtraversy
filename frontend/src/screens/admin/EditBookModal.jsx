@@ -11,15 +11,13 @@ import Loader from '../../components/Loader';
 const EditBookModal = (props) => {
   const { book, onHide, refetch } = props;
   const [title, setTitle] = useState(book.title);
-  const [category, setCategory] = useState(book ? book.category : '');
-  const [description, setDescription] = useState(book ? book.description : '');
-  const [price, setPrice] = useState(book ? book.price : null);
-  const [countInStock, setCountInStock] = useState(
-    book ? book.countInStock : null
-  );
-  const [pages, setPages] = useState(book ? book.pages : null);
-  const [author, setAuthor] = useState(book ? book.author : '');
-  const [vender, setVender] = useState(book ? book.vender : '');
+  const [category, setCategory] = useState(book.category);
+  const [description, setDescription] = useState(book.description);
+  const [price, setPrice] = useState(book.price);
+  const [countInStock, setCountInStock] = useState(book.countInStock);
+  const [pages, setPages] = useState(book.pages);
+  const [author, setAuthor] = useState(book.author);
+  const [vender, setVender] = useState(book.vender);
 
   const [imageFile, setImageFile] = useState('');
 
