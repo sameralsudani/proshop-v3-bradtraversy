@@ -6,9 +6,7 @@ export default function Grade(props) {
     <Link to=''>
       <div className='card2 mb-4'>
         <img className='product-image' src={props.url} alt='product' />
-        <h2 className='bg-primary p-2' style={{ color: 'white' }}>
-          {props.name}
-        </h2>
+        <h3 style={{ color: 'black' }}>{props.name}</h3>
       </div>
     </Link>
   );

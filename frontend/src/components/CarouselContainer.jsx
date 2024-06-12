@@ -17,9 +17,7 @@ export default function CarouselContainer() {
 
   return (
     <div className='App'>
-      <Carousel showDots={true} responsive={responsive}>
-        {product}
-      </Carousel>
+      <Carousel responsive={responsive}>{product}</Carousel>
     </div>
   );
 }
