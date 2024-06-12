@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import SearchBox from './SearchBox';
-import logo from '../assets/logo.png';
+import { FaBookReader } from 'react-icons/fa';
 import { resetCart } from '../slices/cartSlice';
 
 const Header = () => {
@@ -22,8 +22,6 @@ const Header = () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
-      // NOTE: here we need to reset cart state for when a user logs out so the next
-      // user doesn't inherit the previous users cart and shipping
       dispatch(resetCart());
       navigate('/login');
     } catch (err) {
@@ -37,14 +35,18 @@ const Header = () => {
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
-              <img src={logo} alt='ProShop' />
-              BookClubs
+              <FaBookReader
+                style={{
+                  height: '40px',
+                  width: '40px',
+                }}
+              />
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-              <SearchBox />
+              {/* <SearchBox /> */}
               <LinkContainer to='/cart'>
                 <Nav.Link>
                   <FaShoppingCart /> Cart
@@ -55,7 +57,11 @@ const Header = () => {
                   )}
                 </Nav.Link>
               </LinkContainer>
-              <NavDropdown title='Books' id='book-menu'>
+              <NavDropdown
+                title='Books'
+                id='book-menu'
+                style={{ color: 'white' }}
+              >
                 <LinkContainer to='/books/fiction'>
                   <NavDropdown.Item>Fiction</NavDropdown.Item>
                 </LinkContainer>

@@ -2,6 +2,10 @@ import React from 'react';
 import './footer.css';
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+import { FaFacebookF } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
+import { FaInstagramSquare } from 'react-icons/fa';
+import { FaLinkedinIn } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -62,17 +66,45 @@ export default function Footer() {
           <div className='footer-col2'>
             <h4>follow us</h4>
             <div className='social-links2'>
-              <Link to='/'>
-                <i className='fab fa-facebook-f'></i>
+              <Link to='/' style={{ marginBottom: '50px' }}>
+                <FaFacebookF
+                  style={{
+                    height: '33px',
+                    width: '33px',
+                    marginBottom: '50px',
+                    paddingTop: '5px',
+                  }}
+                />
               </Link>
-              <Link to='/'>
-                <i className='fab fa-twitter'></i>
+              <Link to='/' style={{ marginBottom: '50px' }}>
+                <FaTwitter
+                  style={{
+                    height: '33px',
+                    width: '33px',
+                    marginBottom: '50px',
+                    paddingTop: '5px',
+                  }}
+                />
               </Link>
-              <Link to='/'>
-                <i className='fab fa-instagram'></i>
+              <Link to='/' style={{ marginBottom: '50px' }}>
+                <FaInstagramSquare
+                  style={{
+                    height: '33px',
+                    width: '33px',
+                    marginBottom: '50px',
+                    paddingTop: '5px',
+                  }}
+                />
               </Link>
-              <Link to='/'>
-                <i className='fab fa-linkedin-in'></i>
+              <Link to='/' style={{ marginBottom: '50px' }}>
+                <FaLinkedinIn
+                  style={{
+                    height: '33px',
+                    width: '33px',
+                    marginBottom: '50px',
+                    paddingTop: '5px',
+                  }}
+                />
               </Link>
             </div>
           </div>
