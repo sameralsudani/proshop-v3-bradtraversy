@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
-import Footer from './components/Footer';
+// import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer.jsx';
 import BottomTabNav from './components/BottomTabNav';
 import { logout } from './slices/authSlice';
 
@@ -42,6 +43,7 @@ const App = () => {
     <>
       <ToastContainer />
       <Header />
+      {/* <Navbar /> */}
       <main className='py-3'>
         <Container>
           <Outlet />
