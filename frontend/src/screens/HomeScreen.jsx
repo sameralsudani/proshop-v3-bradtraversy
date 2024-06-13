@@ -59,7 +59,7 @@ const HomeScreen = () => {
               </Card>
             </Col>
           </Row>
-          <h3>Shop by Grade</h3>
+
           <CarouselContainer />
         </>
       ) : (

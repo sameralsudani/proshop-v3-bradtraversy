@@ -65,7 +65,7 @@ const Header = () => {
                   <NavDropdown.Item>Fiction</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/books/shopAllproducts'>
-                  <NavDropdown.Item>Shop All Products</NavDropdown.Item>
+                  <NavDropdown.Item>Shop All Books</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/books/valuePacks'>
                   <NavDropdown.Item>Value Packs</NavDropdown.Item>
@@ -82,7 +82,10 @@ const Header = () => {
               </NavDropdown>
               <NavDropdown title='Clubs' id='club-menu'>
                 <LinkContainer to='/clubs/article'>
-                  <NavDropdown.Item>Fun Clubs</NavDropdown.Item>
+                  <NavDropdown.Item>Fun Club</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/clubs/article'>
+                  <NavDropdown.Item>Reading Club</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
 
