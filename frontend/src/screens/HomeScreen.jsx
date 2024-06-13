@@ -16,7 +16,7 @@ const HomeScreen = () => {
             <Col xs={12} md={12}>
               <div className='main-section'>
                 <div className='main-section-2'>
-                  <h3>Read With Us</h3>
+                  <div className='main-section-2-title'>Read With Us</div>
                   <Button style={{ backgroundColor: '#1888ff' }}>
                     Shop Now
                   </Button>
@@ -34,7 +34,7 @@ const HomeScreen = () => {
                     alt='iamge'
                   />
                   <div>
-                    <h3 className='mb-3'>Book clubs</h3>
+                    <h3 className='clubs-section-2-title mb-3'>Book clubs</h3>
                     <Button
                       className='clubs-section-2-button mb-3'
                       style={{ backgroundColor: '#1888ff' }}

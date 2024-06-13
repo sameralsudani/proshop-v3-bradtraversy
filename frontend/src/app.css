@@ -44,14 +44,29 @@ body {
   align-items: center;
 }
 
+.clubs-section-2-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .clubs-section-2-button {
   font-size: 15px;
+}
+
+.main-section-2-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 /*responsive*/
 @media (max-width: 995px) {
   .clubs-section-2-button {
     font-size: 15px;
+  }
+
+  .main-section-2-title {
+    font-size: 25px;
   }
 }
 @media (max-width: 574px) {
@@ -63,5 +78,9 @@ body {
   .clubs-section-image {
     width: 200px;
     height: 150px;
+  }
+
+  .main-section-2-title {
+    font-size: 25px;
   }
 }

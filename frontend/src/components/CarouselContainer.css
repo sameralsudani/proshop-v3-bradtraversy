@@ -55,13 +55,27 @@
   opacity: 0.7;
 }
 
+.shop-now {
+  padding-left: 80px;
+}
+
+.shop-now-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.shop-now-description {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
 /*responsive*/
 @media (max-width: 995px) {
   .carousel-container {
     height: 290px;
   }
   .shop-now {
-    padding-left: 0px;
+    padding-left: 20px;
   }
 
   .grade-text {
@@ -70,7 +84,7 @@
 }
 @media (max-width: 574px) {
   .carousel-container {
-    height: 270px;
+    height: 290px;
   }
   .grade-image {
     height: 150px;
@@ -82,6 +96,6 @@
   }
 
   .shop-now {
-    padding-left: 10px;
+    padding-left: 20px;
   }
 }

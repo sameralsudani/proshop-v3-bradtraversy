@@ -33,7 +33,7 @@
 }
 
 .nav li.active {
-  color: #18bc9c;
+  color: rgb(24, 136, 255);
 }
 
 .nav li:hover {

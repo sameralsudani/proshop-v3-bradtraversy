@@ -17,11 +17,13 @@ export default function CarouselContainer() {
   ));
 
   return (
-    <Container>
-      <Row className='grade-container mb-4'>
+    <>
+      <Row className='grade-container'>
         <Col xs={12} md={12} lg={2} className='shop-now'>
-          <h2>Classroom Libraries</h2>
-          <h5>Create a Community of Readers in Your Classroom</h5>
+          <div className='shop-now-title'>Classroom Libraries</div>
+          <div className='shop-now-description'>
+            Create a Community of Readers in Your Classroom
+          </div>
           <Button style={{ backgroundColor: '#1888ff' }}>Shop Now</Button>
         </Col>
         <Col xs={12} md={12} lg={10} className='carousel-container'>
@@ -32,6 +34,6 @@ export default function CarouselContainer() {
           </Container>
         </Col>
       </Row>
-    </Container>
+    </>
   );
 }
