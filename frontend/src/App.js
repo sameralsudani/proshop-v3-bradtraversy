@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Container } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 // import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer.jsx';
 import BottomTabNav from './components/BottomTabNav';
 import { logout } from './slices/authSlice';
-
+import './app.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -44,10 +43,8 @@ const App = () => {
       <ToastContainer />
       <Header />
       {/* <Navbar /> */}
-      <main className='py-3'>
-        <Container>
-          <Outlet />
-        </Container>
+      <main>
+        <Outlet />
       </main>
       <Footer />
       {width < 821 && <BottomTabNav />}

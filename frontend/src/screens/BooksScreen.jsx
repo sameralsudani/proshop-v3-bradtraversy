@@ -1,7 +1,7 @@
 import React from 'react';
 import Paginate from '../components/Paginate';
 import Book from '../components/Book';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import { useGetBooksByCategoryQuery } from '../slices/booksApiSlice';
 import { useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
@@ -17,7 +17,7 @@ export default function BooksScreen() {
   });
 
   return (
-    <div>
+    <Container>
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -43,6 +43,6 @@ export default function BooksScreen() {
           />
         </>
       )}
-    </div>
+    </Container>
   );
 }

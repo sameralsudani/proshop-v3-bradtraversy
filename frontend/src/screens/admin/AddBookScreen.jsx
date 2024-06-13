@@ -7,6 +7,7 @@ import { Form } from 'react-bootstrap';
 import FormContainer from '../../components/FormContainer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetBooksByCategoryQuery } from '../../slices/booksApiSlice';
+import { Container } from 'react-bootstrap';
 
 const AddBookScreen = () => {
   const { id } = useParams();
@@ -56,7 +57,7 @@ const AddBookScreen = () => {
   };
 
   return (
-    <>
+    <Container>
       <Row className='align-items-center'>
         <Col>
           <FormContainer>
@@ -156,7 +157,7 @@ const AddBookScreen = () => {
           </FormContainer>
         </Col>
       </Row>
-    </>
+    </Container>
   );
 };
 

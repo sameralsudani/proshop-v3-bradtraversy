@@ -20,6 +20,12 @@
   border-radius: 50%;
 }
 
+.grade-text {
+  color: white;
+  font-size: 20px;
+  text-decoration: underline;
+}
+
 .grade-card {
   z-index: 10;
   max-width: 320px;
@@ -55,7 +61,11 @@
     height: 290px;
   }
   .shop-now {
-    padding-left: 0;
+    padding-left: 0px;
+  }
+
+  .grade-text {
+    font-size: 17px;
   }
 }
 @media (max-width: 574px) {
@@ -65,5 +75,13 @@
   .grade-image {
     height: 150px;
     width: 150px;
+  }
+
+  .grade-text {
+    font-size: 17px;
+  }
+
+  .shop-now {
+    padding-left: 10px;
   }
 }

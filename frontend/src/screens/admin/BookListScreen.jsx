@@ -7,6 +7,7 @@ import Paginate from '../../components/Paginate';
 import EditBookModal from './EditBookModal';
 import { useGetBooksByCategoryQuery } from '../../slices/booksApiSlice';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
 const BookListScreen = () => {
   const { pageNumber } = useParams();
@@ -24,7 +25,7 @@ const BookListScreen = () => {
   };
 
   return (
-    <>
+    <Container>
       <Row className='align-items-center'>
         <Col>
           <h2>Books</h2>
@@ -90,7 +91,7 @@ const BookListScreen = () => {
           )}
         </>
       )}
-    </>
+    </Container>
   );
 };
 

@@ -2,59 +2,46 @@ import { Row, Col, Image, Card, Button, Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import CarouselContainer from '../components/CarouselContainer';
-import HomeLoginScreen from './HomeLoginScreen';
 import { useSelector } from 'react-redux';
-import bookStore from '../assets/book-store.jpg';
 
 const HomeScreen = () => {
   const { keyword } = useParams();
   const { userInfo } = useSelector((state) => state.auth);
 
   return (
-    <Container>
+    <>
       {!keyword ? (
         <>
-          <Row className='mb-4'>
-            {!userInfo ? (
-              <Col xs={12} md={6}>
-                <Card
-                  style={{ width: '100%', height: '100%', padding: '20px' }}
-                >
-                  <HomeLoginScreen />
-                </Card>
-              </Col>
-            ) : (
-              <Col xs={12} md={6}>
-                <Card style={{ width: '100%', height: '100%' }}>
-                  <Card.Body>
-                    <Card.Title>Welcome {userInfo.name}!</Card.Title>
-                    <Card.Text>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </Card.Text>
-                    <Button variant='primary'>Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-            )}
-            <Col xs={12} md={6}>
-              <Card style={{ width: '100%', height: '100%' }}>
-                <Image src={bookStore} fluid />
-              </Card>
+          <Row style={{ marginBottom: '-40px' }}>
+            <Col xs={12} md={12}>
+              <div className='main-section'>
+                <div className='main-section-2'>
+                  <h3>Read With Us</h3>
+                  <Button style={{ backgroundColor: '#1888ff' }}>
+                    Shop Now
+                  </Button>
+                </div>
+              </div>
             </Col>
           </Row>
-          <Row className='mt-5 mb-5'>
-            <Col xs={12} md={6}>
+          <Row className='clubs-section mb-5'>
+            <Col xs={12} md={6} className='clubs-section'>
               <Card style={{ width: '100%', height: '100%' }}>
-                <Col>
-                  <Card.Body>
-                    <Card.Title className='mt-3 mb-3'>
-                      Check Out Clubs New Features
-                    </Card.Title>
-                    <Button className='mb-3' variant='success'>
-                      Learn more
+                <Col className='clubs-section-2'>
+                  <Image
+                    className='clubs-section-image'
+                    src='http://res.cloudinary.com/drrpl4bzt/image/upload/v1718308804/rozgqmywol6kwdl7hquc.png'
+                    alt='iamge'
+                  />
+                  <div>
+                    <h3 className='mb-3'>Book clubs</h3>
+                    <Button
+                      className='clubs-section-2-button mb-3'
+                      style={{ backgroundColor: '#1888ff' }}
+                    >
+                      Place your order
                     </Button>
-                  </Card.Body>
+                  </div>
                 </Col>
               </Card>
             </Col>
@@ -67,7 +54,7 @@ const HomeScreen = () => {
           Go Back
         </Link>
       )}
-    </Container>
+    </>
   );
 };
 

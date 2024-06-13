@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Card, Button } from 'react-bootstrap';
 import { BASE_URL } from '../constants';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 const CardsContainer = styled.div`
   display: flex;
@@ -68,37 +68,41 @@ const FunClubsPlansScreen = () => {
   };
 
   return (
-    <Row>
-      {prices.map((price, index) => {
-        return (
-          <Col key={index} sm={12} md={6} lg={4} xl={3}>
-            <CardsContainer>
-              <Card style={{ width: '18rem', height: '25rem' }}>
-                <CardHeader
-                  style={{ backgroundColor: backgroundColors[price.nickname] }}
-                >
-                  <PriceCircle>
-                    <PriceText>${price.unit_amount / 100}</PriceText>
-                  </PriceCircle>
-                </CardHeader>
-                <Card.Body>
-                  <Card.Title style={{ fontSize: '2rem' }}>
-                    {price.nickname}
-                  </Card.Title>
-                  <Button
-                    variant='primary'
-                    className='mt-2'
-                    onClick={() => createSession(price.id)}
+    <Container>
+      <Row>
+        {prices.map((price, index) => {
+          return (
+            <Col key={index} sm={12} md={6} lg={4} xl={3}>
+              <CardsContainer>
+                <Card style={{ width: '18rem', height: '25rem' }}>
+                  <CardHeader
+                    style={{
+                      backgroundColor: backgroundColors[price.nickname],
+                    }}
                   >
-                    Buy now
-                  </Button>
-                </Card.Body>
-              </Card>
-            </CardsContainer>
-          </Col>
-        );
-      })}
-    </Row>
+                    <PriceCircle>
+                      <PriceText>${price.unit_amount / 100}</PriceText>
+                    </PriceCircle>
+                  </CardHeader>
+                  <Card.Body>
+                    <Card.Title style={{ fontSize: '2rem' }}>
+                      {price.nickname}
+                    </Card.Title>
+                    <Button
+                      variant='primary'
+                      className='mt-2'
+                      onClick={() => createSession(price.id)}
+                    >
+                      Buy now
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </CardsContainer>
+            </Col>
+          );
+        })}
+      </Row>
+    </Container>
   );
 };
 
