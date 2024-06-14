@@ -23,9 +23,9 @@ import Message from '../components/Message';
 import Meta from '../components/Meta';
 import { addToCart } from '../slices/cartSlice';
 
-const BookScreen = () => {
+const BookDetailsScreen = () => {
   const { id: bookId } = useParams();
-  console.log('🚀 ~ BookScreen ~ bookId:', bookId);
+  console.log('🚀 ~ BookDetailsScreen ~ bookId:', bookId);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -225,4 +225,4 @@ const BookScreen = () => {
   );
 };
 
-export default BookScreen;
+export default BookDetailsScreen;

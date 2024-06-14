@@ -5,8 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
+import LoginModal from './LoginModal';
+import SignUpModal from './SignUpModal';
+import ForgotPasswordModal from './ForgotPasswordModal';
 import { FaBookReader } from 'react-icons/fa';
 import { resetCart } from '../slices/cartSlice';
+import { useState } from 'react';
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -15,6 +19,10 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [modalShow, setModalShow] = useState(false);
+  const [modalShow2, setModalShow2] = useState(false);
+  const [modalShow3, setModalShow3] = useState(false);
+
   const [logoutApiCall] = useLogoutMutation();
 
   const logoutHandler = async () => {
@@ -22,7 +30,7 @@ const Header = () => {
       await logoutApiCall().unwrap();
       dispatch(logout());
       dispatch(resetCart());
-      navigate('/login');
+      navigate('/');
     } catch (err) {
       console.error(err);
     }
@@ -101,7 +109,12 @@ const Header = () => {
                   </NavDropdown>
                 </>
               ) : (
-                <LinkContainer to='/login'>
+                <LinkContainer
+                  to=''
+                  onClick={() => {
+                    setModalShow(true);
+                  }}
+                >
                   <Nav.Link>
                     <FaUser /> Sign In
                   </Nav.Link>
@@ -126,6 +139,24 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      <LoginModal
+        show={modalShow}
+        onHide={(value) => setModalShow(value)}
+        openSignUpModal={(value) => setModalShow2(value)}
+        openForgotPasswordModal={(value) => setModalShow3(value)}
+      />
+
+      <SignUpModal
+        show={modalShow2}
+        onHide={(value) => setModalShow2(value)}
+        openLoginModal={(value) => setModalShow(value)}
+      />
+
+      <ForgotPasswordModal
+        show={modalShow3}
+        onHide={(value) => setModalShow3(value)}
+      />
     </header>
   );
 };

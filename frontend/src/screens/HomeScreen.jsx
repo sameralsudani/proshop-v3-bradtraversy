@@ -1,12 +1,10 @@
-import { Row, Col, Image, Card, Button, Container } from 'react-bootstrap';
+import { Row, Col, Image, Card, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import CarouselContainer from '../components/CarouselContainer';
-import { useSelector } from 'react-redux';
 
 const HomeScreen = () => {
   const { keyword } = useParams();
-  const { userInfo } = useSelector((state) => state.auth);
 
   return (
     <>
