@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 // import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer.jsx';
+import Footer2 from './components/Footer2/Footer2.jsx';
 import BottomTabNav from './components/BottomTabNav';
 import { logout } from './slices/authSlice';
 import './app.css';
@@ -46,7 +46,7 @@ const App = () => {
       <main>
         <Outlet />
       </main>
-      <Footer />
+      <Footer2 />
       {width < 821 && <BottomTabNav />}
     </>
   );
