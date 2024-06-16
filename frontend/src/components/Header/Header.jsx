@@ -18,6 +18,8 @@ import { useLocation } from 'react-router-dom';
 import './header.css';
 import Dropdown from './Dropdown';
 import Dropdown2 from './Dropdown2';
+import Dropdown3 from './Dropdown3';
+import Dropdown4 from './Dropdown4';
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -60,12 +62,10 @@ const Header = () => {
     // return () => window.removeEventListener(scroll);
   }, []);
 
-  const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [dropdown2, setDropdown2] = useState(false);
-
-  // const handleClick = () => setClick(!click);
-  // const closeMobileMenu = () => setClick(false);
+  const [dropdown3, setDropdown3] = useState(false);
+  const [dropdown4, setDropdown4] = useState(false);
 
   const onMouseEnter = () => {
     if (window.innerWidth < 960) {
@@ -97,6 +97,50 @@ const Header = () => {
       setDropdown2(false);
     }
   };
+  const onMouseEnter3 = () => {
+    if (window.innerWidth < 960) {
+      setDropdown3(false);
+    } else {
+      setDropdown3(true);
+    }
+  };
+
+  const onMouseLeave3 = () => {
+    if (window.innerWidth < 960) {
+      setDropdown3(false);
+    } else {
+      setDropdown3(false);
+    }
+  };
+
+  const onMouseEnter4 = () => {
+    if (window.innerWidth < 960) {
+      setDropdown4(false);
+    } else {
+      setDropdown4(true);
+    }
+  };
+
+  const onMouseLeave4 = () => {
+    if (window.innerWidth < 960) {
+      setDropdown4(false);
+    } else {
+      setDropdown4(false);
+    }
+  };
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <header
@@ -115,9 +159,10 @@ const Header = () => {
               }
             : { backgroundColor: '', backdropFilter: '' }
         }
-        className='navbar'
         expand='lg'
         collapseOnSelect
+        bg='primary'
+        variant='dark'
       >
         <Container>
           <LinkContainer to='/'>
@@ -128,159 +173,166 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-              <div className='navbar-flex container'>
-                <div className='main-menu-items'>
-                  <ul className='main-menu-list'>
-                    <li>
-                      <a href='#'>Home</a>
-                    </li>
-                    <li>
-                      <LinkContainer to='/cart'>
-                        <Nav.Link>
-                          <FaShoppingCart /> Cart
-                          {cartItems.length > 0 && (
-                            <Badge
-                              pill
-                              bg='success'
-                              style={{ marginLeft: '5px' }}
-                            >
-                              {cartItems.reduce((a, c) => a + c.qty, 0)}
-                            </Badge>
+              <LinkContainer to='/'>
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to='/cart'>
+                <Nav.Link>
+                  <FaShoppingCart /> Cart
+                  {cartItems.length > 0 && (
+                    <Badge pill bg='success' style={{ marginLeft: '5px' }}>
+                      {cartItems.reduce((a, c) => a + c.qty, 0)}
+                    </Badge>
+                  )}
+                </Nav.Link>
+              </LinkContainer>
+
+              {/* Laptop */}
+              {width >= 821 ? (
+                <LinkContainer
+                  to=''
+                  onMouseEnter={onMouseEnter2}
+                  onMouseLeave={onMouseLeave2}
+                >
+                  <Nav.Link title='Clubs' id='book-menu'>
+                    Clubs {dropdown2 && <Dropdown2 />}
+                  </Nav.Link>
+                </LinkContainer>
+              ) : (
+                // Mobile
+                <NavDropdown title='Clubs' id='adminmenu'>
+                  <LinkContainer to='/clubs/article'>
+                    <NavDropdown.Item>Fun Club</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/clubs/article'>
+                    <NavDropdown.Item>Reading Club</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              )}
+
+              {/* Laptop */}
+              {width >= 821 ? (
+                <LinkContainer
+                  to=''
+                  onMouseEnter={onMouseEnter}
+                  onMouseLeave={onMouseLeave}
+                >
+                  <Nav.Link title='Books' id='book-menu'>
+                    Books {dropdown && <Dropdown />}
+                  </Nav.Link>
+                </LinkContainer>
+              ) : (
+                // Mobile
+                <NavDropdown title='Books' id='adminmenu'>
+                  <LinkContainer to='/books/fiction'>
+                    <NavDropdown.Item>Fiction</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/books/shopAllproducts'>
+                    <NavDropdown.Item>Shop All Books</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/books/valuePacks'>
+                    <NavDropdown.Item>Value Packs</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/books/fiveOrLess'>
+                    <NavDropdown.Item>$5 or Less</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/books/nonfiction'>
+                    <NavDropdown.Item>Nonfiction</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              )}
+
+              {/* Admin Links */}
+              {userInfo && userInfo.isAdmin && width >= 821 && (
+                <LinkContainer
+                  to=''
+                  onMouseEnter={onMouseEnter3}
+                  onMouseLeave={onMouseLeave3}
+                >
+                  <Nav.Link title='Admin' id='book-menu'>
+                    Admin {dropdown3 && <Dropdown3 />}
+                  </Nav.Link>
+                </LinkContainer>
+              )}
+
+              {/* Admin Links */}
+              {userInfo && userInfo.isAdmin && width < 821 && (
+                <NavDropdown title='Admin' id='adminmenu'>
+                  <LinkContainer to='/admin/bookList'>
+                    <NavDropdown.Item>Books</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/orderlist'>
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/userlist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              )}
+              {/* Mobil */}
+              {width < 821 && (
+                <>
+                  {userInfo ? (
+                    <>
+                      <NavDropdown title={userInfo.name} id='username'>
+                        <LinkContainer to='/profile'>
+                          <NavDropdown.Item>Profile</NavDropdown.Item>
+                        </LinkContainer>
+                        <NavDropdown.Item onClick={logoutHandler}>
+                          Logout
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </>
+                  ) : (
+                    <LinkContainer
+                      to=''
+                      onClick={() => {
+                        setModalShow(true);
+                      }}
+                      style={{ color: 'white' }}
+                    >
+                      <Nav.Link>
+                        <FaUser />
+                      </Nav.Link>
+                    </LinkContainer>
+                  )}
+                </>
+              )}
+
+              {/* laptop */}
+              {width >= 821 && (
+                <>
+                  {userInfo ? (
+                    <>
+                      <LinkContainer
+                        to=''
+                        onMouseEnter={onMouseEnter4}
+                        onMouseLeave={onMouseLeave4}
+                      >
+                        <Nav.Link title='Admin' id='book-menu'>
+                          {userInfo.name}
+                          {dropdown4 && (
+                            <Dropdown4 logoutHandler={logoutHandler} />
                           )}
                         </Nav.Link>
                       </LinkContainer>
-                    </li>
-
-                    <li
-                      onMouseEnter={onMouseEnter2}
-                      onMouseLeave={onMouseLeave2}
+                    </>
+                  ) : (
+                    <LinkContainer
+                      to=''
+                      onClick={() => {
+                        setModalShow(true);
+                      }}
+                      style={{ color: 'white' }}
                     >
-                      <Link title='Books' id='book-menu'>
-                        Clubs
-                      </Link>
-                      {dropdown2 && <Dropdown2 />}
-                    </li>
-
-                    <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-                      <Link title='Books' id='book-menu'>
-                        Books
-                      </Link>
-                      {dropdown && <Dropdown />}
-                    </li>
-
-                    <li>
-                      <a href='#'>Contact</a>
-                    </li>
-
-                    {/* Admin Links */}
-                    {userInfo && userInfo.isAdmin && (
-                      <NavDropdown title='Admin' id='adminmenu'>
-                        <LinkContainer to='/admin/bookList'>
-                          <NavDropdown.Item>Books</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to='/admin/orderlist'>
-                          <NavDropdown.Item>Orders</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to='/admin/userlist'>
-                          <NavDropdown.Item>Users</NavDropdown.Item>
-                        </LinkContainer>
-                      </NavDropdown>
-                    )}
-
-                    {userInfo ? (
-                      <>
-                        <NavDropdown title={userInfo.name} id='username'>
-                          <LinkContainer to='/profile'>
-                            <NavDropdown.Item>Profile</NavDropdown.Item>
-                          </LinkContainer>
-                          <NavDropdown.Item onClick={logoutHandler}>
-                            Logout
-                          </NavDropdown.Item>
-                        </NavDropdown>
-                      </>
-                    ) : (
-                      <li>
-                        <LinkContainer
-                          to=''
-                          onClick={() => {
-                            setModalShow(true);
-                          }}
-                          style={{ color: 'white' }}
-                        >
-                          <Nav.Link>
-                            <FaUser />
-                          </Nav.Link>
-                        </LinkContainer>
-                      </li>
-                    )}
-                  </ul>
-                </div>
-
-                {/* Mobile Menu */}
-                <div className='mobile-menu'>
-                  {/* Hamburger button */}
-                  <div className='mobile-menu-toggle'>
-                    <i className='fas fa-bars fa-2x'></i>
-                  </div>
-                  {/* Mobile Menu Items */}
-                  <div className='mobile-menu-items'>
-                    <ul className='mobile-menu-list'>
-                      <li>
-                        <a href='index.html'>Home</a>
-                      </li>
-                      <li>
-                        <LinkContainer to='/cart'>
-                          <Nav.Link>
-                            <FaShoppingCart /> Cart
-                            {cartItems.length > 0 && (
-                              <Badge
-                                pill
-                                bg='success'
-                                style={{ marginLeft: '5px' }}
-                              >
-                                {cartItems.reduce((a, c) => a + c.qty, 0)}
-                              </Badge>
-                            )}
-                          </Nav.Link>
-                        </LinkContainer>
-                      </li>
-                      <li>
-                        <a href='#summary'>Clubs</a>
-                      </li>
-                      <li>
-                        <a href='#takeaways'>Events</a>
-                      </li>
-
-                      <li>
-                        <a href='contact.html'>Contact</a>
-                      </li>
-                      <li>
-                        <a href='facebook.com' target='_blank'>
-                          <i className='fa-brands fa-facebook'></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href='twitter.com' target='_blank'>
-                          <i className='fa-brands fa-twitter'></i>
-                        </a>
-                      </li>
-                      <li>
-                        <LinkContainer
-                          to=''
-                          onClick={() => {
-                            setModalShow(true);
-                          }}
-                          style={{ color: 'white' }}
-                        >
-                          <Nav.Link>
-                            <FaUser /> Sign In
-                          </Nav.Link>
-                        </LinkContainer>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+                      <Nav.Link>
+                        <FaUser />
+                      </Nav.Link>
+                    </LinkContainer>
+                  )}
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
