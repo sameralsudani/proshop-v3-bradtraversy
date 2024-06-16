@@ -15,6 +15,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import HomeScreen from './screens/HomeScreen';
+import HomeScreen2 from './screens/HomeScreen2';
 import BookDetailsScreen from './screens/BookDetailsScreen';
 import FunClubsPlansScreen from './screens/FunClubsPlansScreen';
 import ArticleScreen from './screens/ArticleScreen';
@@ -39,9 +40,9 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
-      <Route index={true} path='/' element={<HomeScreen />} />
-      <Route path='/search/:keyword' element={<HomeScreen />} />
-      <Route path='/page/:pageNumber' element={<HomeScreen />} />
+      <Route index={true} path='/' element={<HomeScreen2 />} />
+      <Route path='/search/:keyword' element={<HomeScreen2 />} />
+      <Route path='/page/:pageNumber' element={<HomeScreen2 />} />
       <Route
         path='books/:category/page/:pageNumber'
         element={<BooksScreen />}
