@@ -25,8 +25,6 @@ import { addToCart } from '../slices/cartSlice';
 
 const BookDetailsScreen = () => {
   const { id: bookId } = useParams();
-  console.log('🚀 ~ BookDetailsScreen ~ bookId:', bookId);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

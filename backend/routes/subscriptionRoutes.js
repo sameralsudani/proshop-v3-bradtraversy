@@ -6,7 +6,7 @@ import {
 } from '../controllers/subscriptionController.js';
 import { protect } from '../middleware/authMiddleware.js';
 
-router.route('/prices').get(protect, getSubscriptions);
+router.route('/prices').get(getSubscriptions);
 router.route('/session').post(protect, createSession);
 
 export default router;

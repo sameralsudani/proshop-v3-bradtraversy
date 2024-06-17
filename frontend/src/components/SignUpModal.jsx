@@ -11,7 +11,7 @@ import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
 
 const SignUpModal = (props) => {
-  const { onHide, openLoginModal } = props;
+  const { onHide, openLoginModal, refetch, isClub } = props;
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -31,6 +31,9 @@ const SignUpModal = (props) => {
       try {
         const res = await register({ name, email, password }).unwrap();
         dispatch(setCredentials({ ...res }));
+        if (isClub) {
+          refetch();
+        }
         onHide(false);
       } catch (err) {
         toast.error(err?.data?.message || err.error);

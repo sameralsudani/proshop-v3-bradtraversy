@@ -17,8 +17,8 @@ import AdminRoute from './components/AdminRoute';
 import HomeScreen from './screens/HomeScreen';
 import HomeScreen2 from './screens/HomeScreen2';
 import BookDetailsScreen from './screens/BookDetailsScreen';
-import FunClubsPlansScreen from './screens/FunClubsPlansScreen';
-import ArticleScreen from './screens/ArticleScreen';
+import FunClubSubScreen from './screens/FunClubSubScreen';
+import ReadingClubSubScreen from './screens/ReadingClubSubScreen';
 import CartScreen from './screens/CartScreen';
 import BooksScreen from './screens/BooksScreen';
 import CheckEmailScreen from './screens/CheckEmailScreen';
@@ -59,6 +59,12 @@ const router = createBrowserRouter(
         path='/resetPassword/:id/:token'
         element={<ResetPasswordScreen />}
       />
+      <Route path='/funClub/subsciptipns' element={<FunClubSubScreen />} />
+      <Route
+        path='/readingClub/subsciptipns'
+        element={<ReadingClubSubScreen />}
+      />
+
       {/* Registered users */}
       <Route path='' element={<PrivateRoute />}>
         <Route path='/shipping' element={<ShippingScreen />} />
@@ -66,8 +72,6 @@ const router = createBrowserRouter(
         <Route path='/placeorder' element={<PlaceOrderScreen />} />
         <Route path='/order/:id' element={<OrderScreen />} />
         <Route path='/profile' element={<ProfileScreen />} />
-        <Route path='/clubs/article' element={<ArticleScreen />} />
-        <Route path='/clubs/plans' element={<FunClubsPlansScreen />} />
       </Route>
       {/* Admin users */}
       <Route path='' element={<AdminRoute />}>

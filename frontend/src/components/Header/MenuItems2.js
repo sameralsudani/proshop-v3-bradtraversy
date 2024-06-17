@@ -1,12 +1,12 @@
 export const MenuItems2 = [
   {
     title: 'Fun Club',
-    path: '/clubs/article',
+    path: '/funClub/subsciptipns',
     cName: 'dropdown2-link',
   },
   {
     title: 'Reading Club',
-    path: '/clubs/article',
+    path: '/readingClub/subsciptipns',
     cName: 'dropdown2-link',
   },
 ];
