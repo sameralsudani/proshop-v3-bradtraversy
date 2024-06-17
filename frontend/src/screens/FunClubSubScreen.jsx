@@ -13,40 +13,22 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { Link } from 'react-router-dom';
 
-const CardsContainer = styled.div`
-  display: flex;
-  height: 65vh;
-  align-items: center;
-  justify-content: center;
-`;
-
-const CardHeader = styled.div`
-  height: 30rem;
-  background-color: blue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const PriceCircle = styled.div`
-  border: 0.5rem solid white;
-  width: 12.5rem;
-  height: 12.5rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0.1rem 0.1rem 1rem rgba(19, 20, 19, 0.342);
-`;
-
-const PriceText = styled.p`
-  font-size: 3rem;
-  color: white;
-  text-shadow: 0.1rem 0.1rem 1rem rgba(19, 20, 19, 0.342);
-`;
-
 const FunClubSubScreen = () => {
   const [prices, setPrices] = useState([]);
+  console.log('🚀 ~ FunClubSubScreen ~ prices:', prices);
+
+  const imageUrls = [
+    'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718659723/keydvvhoczh5p3uwjulx.png',
+    'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718659810/srgpawy826xjesiamwqi.png',
+    'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718659691/cre94prqzg7culribyoa.png',
+  ];
+
+  let prices2 = prices.map((price, index) => {
+    return {
+      ...price,
+      imageUrl: imageUrls[index],
+    };
+  });
 
   const [modalShow, setModalShow] = useState(false);
   const [modalShow2, setModalShow2] = useState(false);
@@ -73,12 +55,6 @@ const FunClubSubScreen = () => {
     window.location.href = response.url;
   };
 
-  const backgroundColors = {
-    Basic: 'rgb(104, 219, 104)',
-    Standard: 'rgb(185, 42, 23, 0.835)',
-    Premium: 'pink',
-  };
-
   const { data, isLoading, error, refetch } = useGetArticlesQuery({});
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -103,35 +79,26 @@ const FunClubSubScreen = () => {
           )}
 
           <Row>
-            {prices.map((price, index) => {
+            {prices2.map((price, index) => {
               return (
                 <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <CardsContainer>
-                    <Card style={{ width: '18rem', height: '25rem' }}>
-                      <CardHeader
-                        style={{
-                          backgroundColor: backgroundColors[price.nickname],
-                        }}
+                  <Card className='my-3 p-3 rounded'>
+                    <Card.Img src={price.imageUrl} variant='top' />
+
+                    <Card.Body>
+                      <Card.Title as='div' className='book-title'>
+                        <strong>{price.nickname}</strong>
+                      </Card.Title>
+
+                      <Card.Text as='h3'>${price.unit_amount / 100}</Card.Text>
+                      <Button
+                        onClick={createSession(price.id)}
+                        disabled={!userInfo}
                       >
-                        <PriceCircle>
-                          <PriceText>${price.unit_amount / 100}</PriceText>
-                        </PriceCircle>
-                      </CardHeader>
-                      <Card.Body>
-                        <Card.Title style={{ fontSize: '2rem' }}>
-                          {price.nickname}
-                        </Card.Title>
-                        <Button
-                          variant='primary'
-                          className='mt-2'
-                          onClick={() => createSession(price.id)}
-                          disabled={!userInfo}
-                        >
-                          Buy now
-                        </Button>
-                      </Card.Body>
-                    </Card>
-                  </CardsContainer>
+                        SHOP NOW
+                      </Button>
+                    </Card.Body>
+                  </Card>
                 </Col>
               );
             })}
@@ -175,35 +142,26 @@ const FunClubSubScreen = () => {
           )}
 
           <Row>
-            {prices.map((price, index) => {
+            {prices2.map((price, index) => {
               return (
                 <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <CardsContainer>
-                    <Card style={{ width: '18rem', height: '25rem' }}>
-                      <CardHeader
-                        style={{
-                          backgroundColor: backgroundColors[price.nickname],
-                        }}
+                  <Card className='my-3 p-3 rounded'>
+                    <Card.Img src={price.imageUrl} variant='top' />
+
+                    <Card.Body>
+                      <Card.Title as='div' className='book-title'>
+                        <strong>{price.nickname}</strong>
+                      </Card.Title>
+
+                      <Card.Text as='h3'>${price.unit_amount / 100}</Card.Text>
+                      <Button
+                        onClick={createSession(price.id)}
+                        disabled={!userInfo}
                       >
-                        <PriceCircle>
-                          <PriceText>${price.unit_amount / 100}</PriceText>
-                        </PriceCircle>
-                      </CardHeader>
-                      <Card.Body>
-                        <Card.Title style={{ fontSize: '2rem' }}>
-                          {price.nickname}
-                        </Card.Title>
-                        <Button
-                          variant='primary'
-                          className='mt-2'
-                          onClick={() => createSession(price.id)}
-                          disabled={!userInfo}
-                        >
-                          Buy now
-                        </Button>
-                      </Card.Body>
-                    </Card>
-                  </CardsContainer>
+                        SHOP NOW
+                      </Button>
+                    </Card.Body>
+                  </Card>
                 </Col>
               );
             })}
