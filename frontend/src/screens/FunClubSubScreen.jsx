@@ -73,7 +73,7 @@ const FunClubSubScreen = () => {
                   setModalShow(true);
                 }}
               >
-                Please login
+                Login
               </Button>
             </>
           )}
@@ -92,7 +92,7 @@ const FunClubSubScreen = () => {
 
                       <Card.Text as='h3'>${price.unit_amount / 100}</Card.Text>
                       <Button
-                        onClick={createSession(price.id)}
+                        onClick={() => createSession(price.id)}
                         disabled={!userInfo}
                       >
                         SHOP NOW
@@ -136,7 +136,7 @@ const FunClubSubScreen = () => {
                   setModalShow(true);
                 }}
               >
-                Please login
+                Login
               </Button>
             </>
           )}
@@ -155,7 +155,7 @@ const FunClubSubScreen = () => {
 
                       <Card.Text as='h3'>${price.unit_amount / 100}</Card.Text>
                       <Button
-                        onClick={createSession(price.id)}
+                        onClick={() => createSession(price.id)}
                         disabled={!userInfo}
                       >
                         SHOP NOW
