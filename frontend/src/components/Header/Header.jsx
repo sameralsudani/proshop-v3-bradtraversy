@@ -176,19 +176,8 @@ const Header = () => {
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
 
-              <LinkContainer to='/cart'>
-                <Nav.Link>
-                  <FaShoppingCart /> Cart
-                  {cartItems.length > 0 && (
-                    <Badge pill bg='success' style={{ marginLeft: '5px' }}>
-                      {cartItems.reduce((a, c) => a + c.qty, 0)}
-                    </Badge>
-                  )}
-                </Nav.Link>
-              </LinkContainer>
-
               {/* Laptop */}
-              {width >= 821 ? (
+              {width >= 991 ? (
                 <LinkContainer
                   to=''
                   onMouseEnter={onMouseEnter2}
@@ -199,7 +188,7 @@ const Header = () => {
                   </Nav.Link>
                 </LinkContainer>
               ) : (
-                // Mobile
+                // Mobile and Tablet only
                 <NavDropdown title='Clubs' id='adminmenu'>
                   <LinkContainer to='/clubs/article'>
                     <NavDropdown.Item>Fun Club</NavDropdown.Item>
@@ -211,7 +200,7 @@ const Header = () => {
               )}
 
               {/* Laptop */}
-              {width >= 821 ? (
+              {width >= 991 ? (
                 <LinkContainer
                   to=''
                   onMouseEnter={onMouseEnter}
@@ -222,7 +211,7 @@ const Header = () => {
                   </Nav.Link>
                 </LinkContainer>
               ) : (
-                // Mobile
+                // Mobile and Tablet only
                 <NavDropdown title='Books' id='adminmenu'>
                   <LinkContainer to='/books/fiction'>
                     <NavDropdown.Item>Fiction</NavDropdown.Item>
@@ -243,7 +232,7 @@ const Header = () => {
               )}
 
               {/* Admin Links */}
-              {userInfo && userInfo.isAdmin && width >= 821 && (
+              {userInfo && userInfo.isAdmin && width >= 991 && (
                 <LinkContainer
                   to=''
                   onMouseEnter={onMouseEnter3}
@@ -256,7 +245,7 @@ const Header = () => {
               )}
 
               {/* Admin Links */}
-              {userInfo && userInfo.isAdmin && width < 821 && (
+              {userInfo && userInfo.isAdmin && width < 991 && (
                 <NavDropdown title='Admin' id='adminmenu'>
                   <LinkContainer to='/admin/bookList'>
                     <NavDropdown.Item>Books</NavDropdown.Item>
@@ -282,6 +271,20 @@ const Header = () => {
                           Logout
                         </NavDropdown.Item>
                       </NavDropdown>
+                      <LinkContainer to='/cart'>
+                        <Nav.Link>
+                          <FaShoppingCart /> Cart
+                          {cartItems.length > 0 && (
+                            <Badge
+                              pill
+                              bg='success'
+                              style={{ marginLeft: '5px' }}
+                            >
+                              {cartItems.reduce((a, c) => a + c.qty, 0)}
+                            </Badge>
+                          )}
+                        </Nav.Link>
+                      </LinkContainer>
                     </>
                   ) : (
                     <LinkContainer
@@ -304,6 +307,20 @@ const Header = () => {
                 <>
                   {userInfo ? (
                     <>
+                      <LinkContainer to='/cart'>
+                        <Nav.Link>
+                          <FaShoppingCart /> Cart
+                          {cartItems.length > 0 && (
+                            <Badge
+                              pill
+                              bg='success'
+                              style={{ marginLeft: '5px' }}
+                            >
+                              {cartItems.reduce((a, c) => a + c.qty, 0)}
+                            </Badge>
+                          )}
+                        </Nav.Link>
+                      </LinkContainer>
                       <LinkContainer
                         to=''
                         onMouseEnter={onMouseEnter4}

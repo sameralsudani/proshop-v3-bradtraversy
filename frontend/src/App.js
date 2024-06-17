@@ -40,12 +40,12 @@ const App = () => {
     <>
       <ToastContainer />
       <Header />
-      {/* <Navbar /> */}
       <main>
         <Outlet />
       </main>
       <Footer />
-      {width < 821 && <BottomTabNav />}
+      {/* Mobile and Tablet only */}
+      {width < 991 && <BottomTabNav />}
     </>
   );
 };

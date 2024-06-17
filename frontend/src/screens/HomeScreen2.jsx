@@ -148,7 +148,7 @@ export default function HomeScreen2() {
               placeholder='Enter your email'
             />
 
-            <Button className='hero-btn'> Send</Button>
+            <Button className='hero-btn'> SEND</Button>
           </form>
         </div>
       </section>

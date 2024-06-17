@@ -2,11 +2,11 @@ import './CarouselContainer2.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Grade from './Grade';
-import { gradeData, responsive } from './data';
+import { gradeData2, responsive } from './data';
 import { Row, Col, Button, Container } from 'react-bootstrap';
 
 export default function CarouselContainer2() {
-  const product = gradeData.map((item, index) => (
+  const product = gradeData2.map((item, index) => (
     <Grade
       key={index}
       name={item.name}

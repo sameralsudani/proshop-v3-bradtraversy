@@ -69,3 +69,53 @@ export const gradeData = [
     name: '6th Grade',
   },
 ];
+export const gradeData2 = [
+  {
+    id: 1,
+    imageurl:
+      'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718648186/s4mlybuxm4xvaat1wakj.jpg',
+    name: 'Five Nights at Freddy Horror Set',
+  },
+  {
+    id: 2,
+    imageurl:
+      'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718648186/s4mlybuxm4xvaat1wakj.jpg',
+    name: 'A True Book: Your Amazing Body Value Pack',
+  },
+  {
+    id: 3,
+    imageurl:
+      'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718648186/s4mlybuxm4xvaat1wakj.jpg',
+    name: 'Learn About: Your Best Self',
+  },
+  {
+    id: 4,
+    imageurl:
+      'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718648186/s4mlybuxm4xvaat1wakj.jpg',
+    name: 'The Baby-Sitters Club Super Special Value Pack',
+  },
+  {
+    id: 5,
+    imageurl:
+      'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718648186/s4mlybuxm4xvaat1wakj.jpg',
+    name: 'The Baby-Sitters Club Super Special Value Pack',
+  },
+  {
+    id: 6,
+    imageurl:
+      'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718648186/s4mlybuxm4xvaat1wakj.jpg',
+    name: 'Learn About: Your Best Self',
+  },
+  {
+    id: 7,
+    imageurl:
+      'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718648186/s4mlybuxm4xvaat1wakj.jpg',
+    name: 'Five Nights at Freddy Horror Set',
+  },
+  {
+    id: 8,
+    imageurl:
+      'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718648186/s4mlybuxm4xvaat1wakj.jpg',
+    name: 'Five Nights at Freddy Horror Set',
+  },
+];
