@@ -2,11 +2,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header/Header.jsx';
-// import Navbar from './components/Navbar/Navbar';
-import Footer2 from './components/Footer2/Footer2.jsx';
+import Footer from './components/Footer/Footer.jsx';
 import BottomTabNav from './components/BottomTabNav';
 import { logout } from './slices/authSlice';
-// import './app.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -46,7 +44,7 @@ const App = () => {
       <main>
         <Outlet />
       </main>
-      <Footer2 />
+      <Footer />
       {width < 821 && <BottomTabNav />}
     </>
   );

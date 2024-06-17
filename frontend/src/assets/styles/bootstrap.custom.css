@@ -308,18 +308,6 @@ address {
   line-height: inherit;
 }
 
-/* ol,
-ul {
-  padding-left: 2rem;
-} */
-
-/* ol,
-ul,
-dl {
-  margin-top: 0;
-  margin-bottom: 1rem;
-} */
-
 ol ol,
 ul ul,
 ol ul,
@@ -3060,7 +3048,7 @@ textarea.form-control.is-invalid {
 }
 .btn:hover {
   color: var(--bs-btn-hover-color);
-  background-color: var(--bs-btn-hover-bg);
+  background-color: #1359a5;
   border-color: var(--bs-btn-hover-border-color);
 }
 .btn-check + .btn:hover {
@@ -3110,7 +3098,7 @@ fieldset:disabled .btn {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #3c4c5d;
+  --bs-btn-bg: #1888ff;
   --bs-btn-border-color: #3c4c5d;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #33414f;
@@ -4883,7 +4871,7 @@ fieldset:disabled .btn {
 .active > .page-link {
   z-index: 3;
   color: var(--bs-pagination-active-color);
-  background-color: var(--bs-pagination-active-bg);
+  background-color: #1888ff;
   border-color: var(--bs-pagination-active-border-color);
 }
 .page-link.disabled,

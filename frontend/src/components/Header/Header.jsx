@@ -2,7 +2,7 @@ import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../../slices/usersApiSlice';
 import { logout } from '../../slices/authSlice';
 import LoginModal from '../LoginModal';
@@ -14,7 +14,6 @@ import { useState } from 'react';
 import './header.css';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
 import './header.css';
 import Dropdown from './Dropdown';
 import Dropdown2 from './Dropdown2';

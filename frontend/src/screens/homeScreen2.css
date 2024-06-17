@@ -23,21 +23,34 @@ img {
   padding: 0 2rem;
 }
 
-.btn {
+.hero-btn {
   display: inline-block;
-  padding: 1.3rem 2.3rem;
-  border: 1px solid var(--secondary-color);
+  padding: 0.8rem 2rem;
+  border: 1px solid #1888ff;
   border-radius: 32px;
-  background: var(--secondary-color);
-  color: var(--dark-color);
+  background-color: #1888ff;
+  color: #fff;
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.btn:hover {
-  background: var(--primary-color);
+.hero-btn:hover {
+  background: #1359a5;
+}
+
+.hero-btn2 {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 32px;
+  background-color: var(--primary-color);
   color: #fff;
-  border-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hero-btn2:hover {
+  background: #cb343c;
 }
 
 /* Text Classes */

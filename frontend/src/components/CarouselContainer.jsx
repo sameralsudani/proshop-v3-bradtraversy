@@ -6,7 +6,7 @@ import { gradeData, responsive } from './data';
 import { Row, Col, Button, Container } from 'react-bootstrap';
 
 export default function CarouselContainer() {
-  const product = gradeData.map((item, index) => (
+  const grade = gradeData.map((item, index) => (
     <Grade
       key={index}
       name={item.name}
@@ -17,23 +17,21 @@ export default function CarouselContainer() {
   ));
 
   return (
-    <>
-      <Row className='grade-container'>
-        <Col xs={12} md={12} lg={2} className='shop-now'>
-          <div className='shop-now-title'>Classroom Libraries</div>
-          <div className='shop-now-description'>
-            Create a Community of Readers in Your Classroom
-          </div>
-          <Button style={{ backgroundColor: '#1888ff' }}>Shop Now</Button>
-        </Col>
-        <Col xs={12} md={12} lg={10} className='carousel-container'>
-          <Container>
-            <Carousel styel={{ zIndex: '10' }} responsive={responsive}>
-              {product}
-            </Carousel>
-          </Container>
-        </Col>
-      </Row>
-    </>
+    <Row className='grade-container mt-5 mb-5'>
+      <Col xs={12} md={12} lg={2} className='shop-now'>
+        <div className='shop-now-title'>Classroom Libraries</div>
+        <div className='shop-now-description'>
+          Create a Community of Readers in Your Classroom
+        </div>
+        <Button className='hero-btn'>SHOP NOW</Button>
+      </Col>
+      <Col xs={12} md={12} lg={10} className='carousel-container'>
+        <Container>
+          <Carousel styel={{ zIndex: '10' }} responsive={responsive}>
+            {grade}
+          </Carousel>
+        </Container>
+      </Col>
+    </Row>
   );
 }
