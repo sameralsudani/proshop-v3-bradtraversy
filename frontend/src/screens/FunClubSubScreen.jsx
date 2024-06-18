@@ -13,8 +13,7 @@ import Message from '../components/Message';
 import { Link } from 'react-router-dom';
 
 const FunClubSubScreen = () => {
-  const [prices, setPrices] = useState([]);
-  console.log('🚀 ~ FunClubSubScreen ~ prices:', prices);
+  const [subscriptions, setSubscriptions] = useState([]);
 
   const imageUrls = [
     'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718659723/keydvvhoczh5p3uwjulx.png',
@@ -22,7 +21,7 @@ const FunClubSubScreen = () => {
     'http://res.cloudinary.com/drrpl4bzt/image/upload/v1718659691/cre94prqzg7culribyoa.png',
   ];
 
-  let prices2 = prices.map((price, index) => {
+  let subscriptions2 = subscriptions.map((price, index) => {
     return {
       ...price,
       imageUrl: imageUrls[index],
@@ -34,13 +33,12 @@ const FunClubSubScreen = () => {
   const [modalShow3, setModalShow3] = useState(false);
 
   useEffect(() => {
-    fetchPrices();
+    fetchSubscriptions();
   }, []);
 
-  const fetchPrices = async () => {
+  const fetchSubscriptions = async () => {
     const { data: response } = await axios.get(`${BASE_URL}/api/subs/prices`);
-    console.log(response);
-    setPrices(response.data);
+    setSubscriptions(response.data);
   };
 
   const createSession = async (priceId) => {
@@ -78,20 +76,22 @@ const FunClubSubScreen = () => {
           )}
 
           <Row>
-            {prices2.map((price, index) => {
+            {subscriptions2.map((subscription, index) => {
               return (
                 <Col key={index} sm={12} md={6} lg={4} xl={3}>
                   <Card className='my-3 p-3 rounded'>
-                    <Card.Img src={price.imageUrl} variant='top' />
+                    <Card.Img src={subscription.imageUrl} variant='top' />
 
                     <Card.Body>
                       <Card.Title as='div' className='book-title'>
-                        <strong>{price.nickname}</strong>
+                        <strong>{subscription.nickname}</strong>
                       </Card.Title>
 
-                      <Card.Text as='h3'>${price.unit_amount / 100}</Card.Text>
+                      <Card.Text as='h3'>
+                        ${subscription.unit_amount / 100}
+                      </Card.Text>
                       <Button
-                        onClick={() => createSession(price.id)}
+                        onClick={() => createSession(subscription.id)}
                         disabled={!userInfo}
                       >
                         SUBSCRIBE
@@ -141,20 +141,20 @@ const FunClubSubScreen = () => {
           )}
 
           <Row>
-            {prices2.map((price, index) => {
+            {subscriptions2.map((subscription, index) => {
               return (
                 <Col key={index} sm={12} md={6} lg={4} xl={3}>
                   <Card className='my-3 p-3 rounded'>
-                    <Card.Img src={price.imageUrl} variant='top' />
+                    <Card.Img src={subscription.imageUrl} variant='top' />
 
                     <Card.Body>
                       <Card.Title as='div' className='book-title'>
-                        <strong>{price.nickname}</strong>
+                        <strong>{subscription.nickname}</strong>
                       </Card.Title>
 
-                      <Card.Text as='h3'>${price.unit_amount / 100}</Card.Text>
+                      <Card.Text as='h3'>${subscription.unit_amount / 100}</Card.Text>
                       <Button
-                        onClick={() => createSession(price.id)}
+                        onClick={() => createSession(subscription.id)}
                         disabled={!userInfo}
                       >
                         SUBSCRIBE
