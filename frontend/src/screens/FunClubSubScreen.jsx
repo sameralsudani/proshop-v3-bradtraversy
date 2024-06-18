@@ -94,7 +94,7 @@ const FunClubSubScreen = () => {
                         onClick={() => createSession(price.id)}
                         disabled={!userInfo}
                       >
-                        SHOP NOW
+                        SUBSCRIBE
                       </Button>
                     </Card.Body>
                   </Card>
@@ -157,7 +157,7 @@ const FunClubSubScreen = () => {
                         onClick={() => createSession(price.id)}
                         disabled={!userInfo}
                       >
-                        SHOP NOW
+                        SUBSCRIBE
                       </Button>
                     </Card.Body>
                   </Card>
