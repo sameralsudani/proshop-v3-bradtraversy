@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 import { Card, Button } from 'react-bootstrap';
 import { BASE_URL } from '../constants';
 import { Row, Col, Container } from 'react-bootstrap';

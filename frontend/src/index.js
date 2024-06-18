@@ -33,6 +33,7 @@ import UserListScreen from './screens/admin/UserListScreen';
 import UserEditScreen from './screens/admin/UserEditScreen';
 import BookListScreen from './screens/admin/BookListScreen';
 import AddBookScreen from './screens/admin/AddBookScreen';
+import NotFoundScreen from './screens/NotFoundScreen';
 import store from './store';
 import { Provider } from 'react-redux';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
@@ -64,6 +65,7 @@ const router = createBrowserRouter(
         path='/readingClub/subsciptipns'
         element={<ReadingClubSubScreen />}
       />
+      <Route path='*' element={<NotFoundScreen />} />
 
       {/* Registered users */}
       <Route path='' element={<PrivateRoute />}>

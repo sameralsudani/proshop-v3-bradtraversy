@@ -190,10 +190,10 @@ const Header = () => {
               ) : (
                 // Mobile and Tablet only
                 <NavDropdown title='Clubs' id='adminmenu'>
-                  <LinkContainer to='/clubs/article'>
+                  <LinkContainer to='/funClub/subsciptipns'>
                     <NavDropdown.Item>Fun Club</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to='/clubs/article'>
+                  <LinkContainer to='/readingClub/subsciptipns'>
                     <NavDropdown.Item>Reading Club</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
@@ -259,7 +259,7 @@ const Header = () => {
                 </NavDropdown>
               )}
               {/* Mobil */}
-              {width < 821 && (
+              {width < 991 && (
                 <>
                   {userInfo ? (
                     <>
@@ -303,7 +303,7 @@ const Header = () => {
               )}
 
               {/* laptop */}
-              {width >= 821 && (
+              {width >= 991 && (
                 <>
                   {userInfo ? (
                     <>
