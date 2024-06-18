@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap';
-import { FaShoppingCart, FaUser, FaRegUserCircle } from 'react-icons/fa';
+import { FaShoppingCart, FaRegUserCircle } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { logout } from '../../slices/authSlice';
 import LoginModal from '../LoginModal';
 import SignUpModal from '../SignUpModal';
 import ForgotPasswordModal from '../ForgotPasswordModal';
-import { FaBookReader } from 'react-icons/fa';
+import { FaBook } from 'react-icons/fa';
 import { resetCart } from '../../slices/cartSlice';
 import { useState } from 'react';
 import './header.css';
@@ -166,7 +166,8 @@ const Header = () => {
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
-              <FaBookReader className='logo' />
+              <FaBook className='logo' />
+              BookShop
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
