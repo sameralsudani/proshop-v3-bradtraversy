@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import { FaShoppingCart, FaUser, FaRegUserCircle } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -292,10 +292,15 @@ const Header = () => {
                       onClick={() => {
                         setModalShow(true);
                       }}
-                      style={{ color: 'white' }}
                     >
                       <Nav.Link>
-                        <FaUser />
+                        <FaRegUserCircle
+                          style={{
+                            color: 'white',
+                            width: '25px',
+                            height: '25px',
+                          }}
+                        />
                       </Nav.Link>
                     </LinkContainer>
                   )}
@@ -340,10 +345,15 @@ const Header = () => {
                       onClick={() => {
                         setModalShow(true);
                       }}
-                      style={{ color: 'white' }}
                     >
                       <Nav.Link>
-                        <FaUser />
+                        <FaRegUserCircle
+                          style={{
+                            color: 'white',
+                            width: '25px',
+                            height: '25px',
+                          }}
+                        />
                       </Nav.Link>
                     </LinkContainer>
                   )}
