@@ -7,19 +7,26 @@ import BottomTabNav from './components/BottomTabNav';
 import { logout } from './slices/authSlice';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { BASE_URL } from './constants';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const expirationTime = localStorage.getItem('expirationTime');
-    if (expirationTime) {
-      const currentTime = new Date().getTime();
-
-      if (currentTime > expirationTime) {
-        dispatch(logout());
-      }
+    function fetchProfile() {
+      axios
+        .get(`${BASE_URL}/api/users/profile`)
+        .then((response) => {
+          console.log('🚀 response:', response);
+        })
+        .catch((err) => {
+          if (err.message.includes('401')) {
+            dispatch(logout());
+          }
+        });
     }
+    fetchProfile();
   }, [dispatch]);
 
   const [width, setWidth] = useState(window.innerWidth);

@@ -4,12 +4,12 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 dotenv.config();
 import connectDB from './config/db.js';
-import productRoutes from './routes/productRoutes.js';
+
 import bookRoutes from './routes/bookRoutes.js';
 import subscriptionRoutes from './routes/subscriptionRoutes.js';
+import payRoutes from './routes/payRoutes.js';
 import articleRoutes from './routes/articleRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-import orderRoutes from './routes/orderRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import forgotPasswordRoutes from './routes/forgotPasswordRoutes.js';
 import resetPasswordRoutes from './routes/resetPasswordRoutes.js';
@@ -32,19 +32,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use('/api/products', productRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/subs', subscriptionRoutes);
+app.use('/api/stripe', payRoutes);
 app.use('/api/clubs', articleRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/orders', orderRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/forgotPassword', forgotPasswordRoutes);
 app.use('/api/resetPassword/', resetPasswordRoutes);
-
-app.get('/api/config/paypal', (req, res) =>
-  res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
-);
 
 if (process.env.NODE_ENV === 'production') {
   const __dirname = path.resolve();

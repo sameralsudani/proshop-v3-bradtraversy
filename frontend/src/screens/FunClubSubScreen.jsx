@@ -63,16 +63,20 @@ const FunClubSubScreen = () => {
       ) : error ? (
         <>
           {!userInfo && (
-            <>
-              <h3>Please login first</h3>
-              <Button
-                onClick={() => {
-                  setModalShow(true);
-                }}
-              >
-                Login
-              </Button>
-            </>
+            <Col md={6}>
+              <Message>
+                Please{' '}
+                <Link
+                  to=''
+                  onClick={() => {
+                    setModalShow(true);
+                  }}
+                >
+                  sign in
+                </Link>{' '}
+                to subscribe
+              </Message>
+            </Col>
           )}
 
           <Row>
@@ -90,10 +94,7 @@ const FunClubSubScreen = () => {
                       <Card.Text as='h3'>
                         ${subscription.unit_amount / 100}
                       </Card.Text>
-                      <Button
-                        onClick={() => createSession(subscription.id)}
-                        disabled={!userInfo}
-                      >
+                      <Button onClick={() => createSession(subscription.id)}>
                         SUBSCRIBE
                       </Button>
                     </Card.Body>
@@ -152,11 +153,10 @@ const FunClubSubScreen = () => {
                         <strong>{subscription.nickname}</strong>
                       </Card.Title>
 
-                      <Card.Text as='h3'>${subscription.unit_amount / 100}</Card.Text>
-                      <Button
-                        onClick={() => createSession(subscription.id)}
-                        disabled={!userInfo}
-                      >
+                      <Card.Text as='h3'>
+                        ${subscription.unit_amount / 100}
+                      </Card.Text>
+                      <Button onClick={() => createSession(subscription.id)}>
                         SUBSCRIBE
                       </Button>
                     </Card.Body>

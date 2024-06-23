@@ -14,7 +14,8 @@ import {
 import { HelmetProvider } from 'react-helmet-async';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
-import HomeScreen from './screens/HomeScreen';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 import HomeScreen2 from './screens/HomeScreen2';
 import BookDetailsScreen from './screens/BookDetailsScreen';
 import FunClubSubScreen from './screens/FunClubSubScreen';
@@ -34,23 +35,19 @@ import UserEditScreen from './screens/admin/UserEditScreen';
 import BookListScreen from './screens/admin/BookListScreen';
 import AddBookScreen from './screens/admin/AddBookScreen';
 import NotFoundScreen from './screens/NotFoundScreen';
+import CheckoutSuccessScreen from './screens/CheckoutSuccessScreen';
 import store from './store';
 import { Provider } from 'react-redux';
-import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen2 />} />
-      <Route path='/search/:keyword' element={<HomeScreen2 />} />
-      <Route path='/page/:pageNumber' element={<HomeScreen2 />} />
+      <Route path='/login' element={<LoginScreen />} />
+      <Route path='/register' element={<RegisterScreen />} />
       <Route
         path='books/:category/page/:pageNumber'
         element={<BooksScreen />}
-      />
-      <Route
-        path='/search/:keyword/page/:pageNumber'
-        element={<HomeScreen />}
       />
       <Route path='/book/:id' element={<BookDetailsScreen />} />
       <Route path='/cart' element={<CartScreen />} />
@@ -74,6 +71,7 @@ const router = createBrowserRouter(
         <Route path='/placeorder' element={<PlaceOrderScreen />} />
         <Route path='/order/:id' element={<OrderScreen />} />
         <Route path='/profile' element={<ProfileScreen />} />
+        <Route path='/checkout-success' element={<CheckoutSuccessScreen />} />
       </Route>
       {/* Admin users */}
       <Route path='' element={<AdminRoute />}>
@@ -96,9 +94,7 @@ root.render(
   <React.StrictMode>
     <HelmetProvider>
       <Provider store={store}>
-        <PayPalScriptProvider deferLoading={true}>
-          <RouterProvider router={router} />
-        </PayPalScriptProvider>
+        <RouterProvider router={router} />
       </Provider>
     </HelmetProvider>
   </React.StrictMode>
