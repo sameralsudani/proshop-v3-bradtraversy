@@ -29,7 +29,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
       from: 'samerxxxalsudani@gmail.com',
       to: email,
       subject: 'Reset Password Link',
-      text: `https://proshop-v3-bradtraversy.onrender.com/resetPassword/${user._id}/${token}`,
+      text: `${process.env.CLIENT_URL}/${user._id}/${token}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
