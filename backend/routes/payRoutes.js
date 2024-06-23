@@ -9,7 +9,7 @@ router.route('/create-checkout-session').post(protect, createSession);
 
 // Stripe webhook
 router.post(
-  '/webhook',
+  '/checkout/webhook',
   express.json({ type: 'application/json' }),
   async (req, res) => {
     let data;

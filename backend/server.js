@@ -34,12 +34,14 @@ app.use(cookieParser());
 
 app.use('/api/books', bookRoutes);
 app.use('/api/subs', subscriptionRoutes);
-app.use('/api/stripe', payRoutes);
+app.use('/api/order', payRoutes);
 app.use('/api/clubs', articleRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/forgotPassword', forgotPasswordRoutes);
 app.use('/api/resetPassword/', resetPasswordRoutes);
+
+app.use('/api/order/checkout/webhook', express.raw({ type: '*/*' }));
 
 if (process.env.NODE_ENV === 'production') {
   const __dirname = path.resolve();

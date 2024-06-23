@@ -46,7 +46,7 @@ const CartScreen = () => {
       setModalShow(true);
     } else {
       axios
-        .post(`${BASE_URL}/api/stripe/create-checkout-session`, {
+        .post(`${BASE_URL}/api/order/create-checkout-session`, {
           cartItems,
           userId: userInfo._id,
         })
